@@ -5,8 +5,11 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import dotEnv from 'dotenv';
 
 import router from './router';
+
+dotEnv.config();
 
 const app = express();
 
@@ -20,14 +23,16 @@ app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
-server.listen(8080, ()=> {
-    console.log('Server running on http://localhost:8080/')
+const port = process.env.PORT || 8080
+
+server.listen(port, ()=> {
+    console.log(`Server running on http://localhost:${port}/`)
 })
 
-const MONGO_URL = "mongodb+srv://arthuralveslima:123@cluster0.crgql67.mongodb.net/?retryWrites=true&w=majority"
+const mongoURL = process.env.MONGO_URL
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGO_URL)
+mongoose.connect(mongoURL)
 mongoose.connection.on('error', (error: Error) => console.log(error))
 
 app.use('/', router());
