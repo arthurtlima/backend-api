@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUsers } from '../../db/users'
+import { getUsers } from '../../services/userService'
 
 export const getAllUsers = async (
   req: express.Request,

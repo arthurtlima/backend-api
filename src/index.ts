@@ -7,7 +7,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import dotEnv from 'dotenv'
 
-import router from './router'
+import router from './routers'
 
 dotEnv.config()
 

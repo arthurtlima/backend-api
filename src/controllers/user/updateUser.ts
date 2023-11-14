@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUserById } from '../../db/users'
+import { getUserById } from '../../services/userService'
 
 export const updateUser = async (
   req: express.Request,

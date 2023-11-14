@@ -1,5 +1,5 @@
 import express from 'express'
-import { deleteUserById } from '../../db/users'
+import { deleteUserById } from '../../services/userService'
 
 export const deleteUser = async (
   req: express.Request,
