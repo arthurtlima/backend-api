@@ -1,11 +1,14 @@
 {
-    "compilerOptions": {
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "baseUrl": "./src",
-        "outDir": "dist",
-        "sourceMap": true,
-        "noImplicitAny": true
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "baseUrl": "./src",
+    "paths": {
+      "@controllers/*": ["controllers/*"],
     },
-    "include": ["src/**/*"]
+    "outDir": "dist",
+    "sourceMap": true,
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*"]
 }
