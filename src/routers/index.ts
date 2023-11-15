@@ -5,9 +5,7 @@ import users from './users'
 
 const router = express.Router()
 
-export default (): express.Router => {
-  authentications(router)
-  users(router)
+router.use(authentications)
+router.use(users)
 
-  return router
-}
+export default router

@@ -37,4 +37,4 @@ mongoose.Promise = Promise
 mongoose.connect(mongoURL)
 mongoose.connection.on('error', (error: Error) => console.log(error))
 
-app.use('/', router())
+app.use('/', router)
