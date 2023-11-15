@@ -1,7 +1,8 @@
 import express from 'express'
 
 import { getUserByEmail } from '../../services/userService'
-import { random, authentication } from '../../helpers'
+import { generateAuthenticationHash } from '../../helpers/authentication'
+import { generateRandomString } from '../../helpers/random'
 
 export const login = async (req: express.Request, res: express.Response) => {
   try {
@@ -19,14 +20,20 @@ export const login = async (req: express.Request, res: express.Response) => {
       return res.sendStatus(400)
     }
 
-    const expectedHash = authentication(user.authentication.salt, password)
+    const expectedHash = generateAuthenticationHash(
+      user.authentication.salt,
+      password,
+    )
 
     if (user.authentication.password !== expectedHash) {
       return res.sendStatus(403)
     }
 
-    const salt = random()
-    user.authentication.sessionToken = authentication(salt, user._id.toString())
+    const salt = generateRandomString()
+    user.authentication.sessionToken = generateAuthenticationHash(
+      salt,
+      user._id.toString(),
+    )
 
     await user.save()
 
