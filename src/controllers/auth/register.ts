@@ -1,7 +1,8 @@
 import express from 'express'
 
 import { createUser, getUserByEmail } from '../../services/userService'
-import { random, authentication } from '../../helpers'
+import { generateAuthenticationHash } from '../../helpers/authentication'
+import { generateRandomString } from '../../helpers/random'
 
 export const register = async (req: express.Request, res: express.Response) => {
   try {
@@ -17,13 +18,13 @@ export const register = async (req: express.Request, res: express.Response) => {
       return res.sendStatus(400)
     }
 
-    const salt = random()
+    const salt = generateRandomString()
     const user = await createUser({
       email,
       username,
       authentication: {
         salt,
-        password: authentication(salt, password),
+        password: generateAuthenticationHash(salt, password),
       },
     })
 
