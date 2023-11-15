@@ -1,6 +1,7 @@
 import express from 'express'
 
 import { createUser, getUserByEmail } from '../../services/userService'
+
 import { generateAuthenticationHash } from '../../helpers/authentication'
 import { generateRandomString } from '../../helpers/random'
 

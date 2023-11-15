@@ -1,8 +1,8 @@
-import express from 'express'
-
 import { register, login } from '../controllers/auth'
 
-const router = express.Router()
+import createRouter from '../helpers/router'
+
+const router = createRouter()
 
 router.post('/auth/register', register)
 router.post('/auth/login', login)

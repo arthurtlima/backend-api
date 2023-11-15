@@ -1,9 +1,9 @@
-import express from 'express'
-
 import authentications from './authentications'
 import users from './users'
 
-const router = express.Router()
+import createRouter from '../helpers/router'
+
+const router = createRouter()
 
 router.use(authentications)
 router.use(users)
