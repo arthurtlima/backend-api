@@ -4,10 +4,10 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import compression from 'compression'
 import cors from 'cors'
-import mongoose from 'mongoose'
 import dotEnv from 'dotenv'
 
 import router from './routers'
+import { connectToDatabase } from './database/db'
 
 dotEnv.config()
 
@@ -31,10 +31,6 @@ server.listen(port, () => {
   console.log(`Server running on http://localhost:${port}/`)
 })
 
-const mongoURL = process.env.MONGO_URL
-
-mongoose.Promise = Promise
-mongoose.connect(mongoURL)
-mongoose.connection.on('error', (error: Error) => console.log(error))
+connectToDatabase()
 
 app.use('/', router)
