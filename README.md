@@ -4,6 +4,10 @@
  REST API with Node.js, Express and TypeScript. We will also be using MongoDB as our database. 
 </p>
 
+<h4 align="center">
+	🚧 Completed 🚀 🚧
+</h4>
+
 Table of Contents
 =================
 <!--ts-->
